@@ -33,7 +33,7 @@ class App extends React.Component {
                     <div style={{ display: 'flex' }}>
                         {
                             this.state.lessons.map(l => <LessonCard key={l.value}
-                                name={l.text} />)
+                                name={l.text} id={l.value}/>)
                         }
                     </div>
                 </div>
