@@ -32,8 +32,8 @@ class App extends React.Component {
                     </div>
                     <div style={{ display: 'flex' }}>
                         {
-                            lessons.map(l => <LessonCard key={l.id}
-                                name={l.name} />)
+                            this.state.lessons.map(l => <LessonCard key={l.value}
+                                name={l.text} />)
                         }
                     </div>
                 </div>
@@ -45,7 +45,7 @@ class App extends React.Component {
     getLessons() {
         axios.get('https://www.sfu.ca/bin/wcm/course-outlines?2015/summer/cmpt/120/')
             .then(({data: lessons}) => {
-                console.log('response', res);
+                console.log('response', lessons);
                 this.setState({
                     ...this.state, 
                     lessons
