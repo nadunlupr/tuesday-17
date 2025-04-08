@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import loaderImg from '../assets/images/loader.gif';
+import { Link } from 'react-router'
 
 class LessonCard extends React.Component {
     constructor(props) {
@@ -38,7 +39,8 @@ class LessonCard extends React.Component {
                             !this.state.description &&
                             <img src={loaderImg} alt="" width="40px" />
                         }
-                        <a href="./lesson-page.html">Go to lesson</a>
+                        <Link to='/lesson'>Go to lesson</Link>
+                        {/* <a href="./lesson-page.html">Go to lesson</a> */}
                     </div>
                 }
             </div>
@@ -47,11 +49,16 @@ class LessonCard extends React.Component {
 
     onViewClicked() {
         // this.setState({ viewSummary: !this.state.viewSummary });
-        this.setState(previousState => ({
-            ...previousState,
-            viewSummary: !this.state.viewSummary,
-            description: undefined
-        }));
+        // this.setState(previousState => ({
+        //     ...previousState,
+        //     viewSummary: !this.state.viewSummary,
+        //     description: undefined
+        // }));
+        this.setState(prevState => ({
+                ...prevState,
+                viewSummary: !prevState.viewSummary,
+                description: undefined
+            }));
         this.getLessonDetails();
     }
 

@@ -42,6 +42,10 @@ class App extends React.Component {
         );
     }
 
+    changeName(newName){
+        this.setState({name: newName})
+    }
+
     getLessons() {
         axios.get('https://www.sfu.ca/bin/wcm/course-outlines?2015/summer/cmpt/120/')
             .then(({data: lessons}) => {
