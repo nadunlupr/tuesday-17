@@ -1,16 +1,19 @@
 import { useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
+import api from '../../services/api';
+import { useNavigate } from 'react-router';
 
 function CreateNews(props) {
     // const [title, setTitle] = useState('Initial title');
-    // const [slug, setSlug] = useState('');
+    // const [slug, setSlug] = useState('');    
     const initialState = {
         title: '',
         slug: '',
         text: ''
     };
     const [state, setState] = useState(initialState);
-
+    const navigate = useNavigate();
+    
     const onTextChange = (event) => {
         const {
             target: {
@@ -20,11 +23,23 @@ function CreateNews(props) {
         setState(prevState => ({ ...prevState, text: inputText }))
     }
 
-    const createNews = () => {
-        axios.defaults.baseURL = 'http://88.200.63.148:5009';
-        axios.post('/novice', {
-            ...this.state
-        })
+    const createNews = async () => {
+        // axios.defaults.baseURL = 'http://88.200.63.148:9002';
+        try {
+            const { data: { id } } = await api.post('/novice', {
+                ...state
+            })
+            // .then(res => {
+            //     console.log('response: ', res)
+            // })
+            // .catch(err => console.err('err: ', err));
+            console.log('record id: ', id);
+            navigate(`/success/${id}`);
+
+        }
+        catch (error) {
+            console.error('Request error: ', error);
+        }
     }
 
     return (
@@ -45,8 +60,8 @@ function CreateNews(props) {
 
                 <textarea onChange={event => onTextChange(event)}
                     placeholder='Enter your news here' />
+                <button onClick={() => createNews()}>Create News</button>
             </div>
-            <button onClick={() => createNews()}>Create News</button>
         </div>
     )
 }
