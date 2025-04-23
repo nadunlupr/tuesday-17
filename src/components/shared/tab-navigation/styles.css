@@ -1,0 +1,10 @@
+.tab-navigation {
+    .tab-container {
+        display: flex;
+        gap: '5px';
+        
+        .tab-item {
+
+        }
+    }
+}
