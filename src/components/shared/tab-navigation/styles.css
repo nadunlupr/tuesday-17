@@ -1,10 +1,10 @@
 .tab-navigation {
     .tab-container {
         display: flex;
-        gap: '5px';
+        gap: '15px';
         
         .tab-item {
-
+            background: green;
         }
     }
 }

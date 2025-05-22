@@ -2,7 +2,7 @@ import { Link } from 'react-router';
 
 function TabItem({ text, url }) {
     return (
-        <div>
+        <div className='tab-item'>
             <Link to={url}>
                 {text}
             </Link>
